@@ -1,0 +1,559 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: black;
+}
+p,
+a,
+h1,
+h2,
+h3 {
+  font-family: Montserrat, sans-serif;
+}
+body {
+  overflow-x: hidden;
+}
+div.ctn {
+  width: 100vw;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+.layerD,
+.layerG {
+  width: 100vw;
+  height: 100vh;
+  background-color: aqua;
+  position: fixed;
+  transition: left 1s ease;
+}
+.layerG {
+  left: 100vw;
+}
+.layerD {
+  left: 100vw;
+}
+.active {
+  left: 0px;
+}
+
+header {
+  height: 100px;
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+nav ul {
+  display: flex;
+  gap: 16px;
+}
+nav ul li {
+  list-style-type: none;
+  position: relative;
+}
+nav ul li a {
+  text-decoration: none;
+}
+.dropdown {
+  transform: translateY(14px);
+  visibility: hidden; /*Cacher le menu déroulant par défaut */
+  position: absolute; /* Positionner le sous-menu */
+  display: flex;
+  flex-direction: column;
+
+  min-width: 300px; /* Largeur minimale pour le sous-menu */
+  z-index: 1; /* Au-dessus des autres éléments */
+
+  opacity: 0; /* Commencer avec une opacité de 0 */
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  padding: 16px 0px;
+}
+
+.dropdown li {
+  float: none;
+  padding-left: 16px;
+}
+.dropdown li:hover {
+}
+
+nav ul li:hover .dropdown {
+  visibility: visible; /* Afficher le menu déroulant au survol */
+  opacity: 1; /* Rendre l'élément visible */
+  transform: translateY(0); /* Remettre à la position d'origine */
+}
+div.icones {
+  display: flex;
+  gap: 16px;
+}
+div.icones div {
+  position: relative;
+}
+.badge {
+  box-shadow: 0 0 3px rgb(255 255 255 / 70%);
+  border-radius: 50%;
+  font-size: 10px;
+  right: -6px;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  position: absolute;
+  text-align: center;
+  top: -10px;
+  color: #ffffff;
+  background-color: #dc9a0e;
+}
+
+.banniere {
+  width: 100%;
+  height: 400px; /* Remplacez par le chemin de votre image */
+  background-size: cover; /*  background-image: url('votre-image.jpg');Couvre toute la bannière */
+  background-image: url("./static/banniere.jpeg");
+  background-position: center; /* Centrer l'image */
+  display: flex; /* Utiliser flexbox pour centrer le contenu */
+  align-items: center; /* Centrer verticalement */
+  justify-content: flex-end; /* Alignement à droite */
+  color: white; /* Couleur du texte */
+  padding: 20px; /* Ajout de padding */
+}
+.contenu {
+  width: 50%;
+  text-align: center;
+}
+
+.contenu p {
+  font-size: 48px; /* Taille du paragraphe */
+  margin: 30px 0; /* Marge autour du paragraphe */
+}
+
+.contenu .btn {
+  background-color: #dc9a0e; /* Couleur du bouton */
+  color: white; /* Couleur du texte du bouton */
+  padding: 15px 30px; /* Espacement interne */
+  text-decoration: none; /* Pas de soulignement */
+  border-radius: 32px; /* Coins arrondis */
+  font-size: 32px;
+  transition: background-color 0.3s; /* Transition pour le survol */
+}
+
+.btn:hover {
+  background-color: black; /* Couleur au survol */
+}
+section.produits {
+  width: 100%;
+  margin-bottom: 80px;
+}
+section.plusvendu {
+  margin-bottom: 80px;
+}
+
+.line {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 36px;
+}
+.card {
+  width: 300px; /* Largeur de la carte */
+  height: 350px; /* Hauteur de la carte */
+  /* background-image: url('votre-image.jpg');Remplacez par le chemin de votre image */
+  background-image: url("./static/banniere.jpeg");
+  background-size: cover; /* Couvre toute la carte */
+  background-position: center; /* Centre l'image */
+  border: 2px solid #ccc; /* Bordure pour une meilleure visibilité */
+  transition: transform 0.3s ease; /* Transition pour l'animation */
+  position: relative; /* Pour positionner le contenu */
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  /* Agrandir la carte au survol */
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.card-content {
+  position: absolute; /* Positionner le contenu au-dessus de l'image */
+  bottom: 20px; /* Aligner en bas */
+  margin-left: 10px;
+  margin-right: 10px;
+  left: 0; /* Aligner à gauche */
+  right: 0; /* Aligner à droite */
+  background-color: white; /* Fond semi-transparent */
+  color: white; /* Couleur du texte */
+  padding: 20px; /* Espacement interne */
+  text-align: center; /* Centrer le texte */
+}
+.like {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  opacity: 0;
+  z-index: 10;
+}
+.like:hover {
+  color: #dc9a0e;
+}
+
+.card-content h2 {
+  margin: 0; /* Pas de marge */
+  font-size: 20px; /* Taille du titre */
+  color: #6ec1e4;
+}
+.card-content h2:hover {
+  color: #dc9a0e;
+}
+
+section.plusvendu h2 {
+  text-align: center;
+}
+
+.card-content p {
+  margin: 5px 0 0; /* Marge autour du paragraphe */
+  font-size: 12px; /* Taille du texte */
+}
+
+.price {
+  font-size: 18px; /* Taille du texte du prix */
+  color: #333; /* Couleur du texte du prix */
+  margin: 10px 0; /* Marge autour du prix */
+}
+
+.buy-button {
+  background-color: #ff5733; /* Couleur du bouton */
+  color: white; /* Couleur du texte du bouton */
+  padding: 10px 20px; /* Espacement interne */
+  border: none; /* Pas de bordure */
+  border-radius: 5px; /* Coins légèrement arrondis */
+  cursor: pointer; /* Curseur pointer pour le bouton */
+  transition: background-color 0.3s; /* Transition pour le survol */
+  margin: 10px 0;
+  display: none;
+}
+
+.buy-button:hover {
+  background-color: #c70039; /* Couleur au survol */
+}
+section.plusvendu .card .card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+section.plusvendu .card .like {
+  opacity: 1;
+}
+.like2 {
+  position: absolute;
+  right: 33px;
+  top: 15px;
+  opacity: 1;
+}
+section.plusvendu .card:hover {
+  transform: scale(1);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+section.plusvendu .card:hover .card-content .buy-button {
+  display: block;
+}
+.notif_like {
+  position: absolute;
+  border: 1px solid black;
+  right: 50px;
+  top: 0px;
+  opacity: 0;
+  transition: all ease-in-out 0.5s;
+  height: 30px;
+  min-width: 200px;
+}
+.notif_like p {
+  font-size: small;
+  height: 100%;
+  width: 100%;
+  padding: 5px 5px;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+.like:hover .notif_like {
+  opacity: 1;
+}
+
+section.promotions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+.promotion_ctn {
+  width: 80%;
+  background-color: #f2f0ee;
+  padding-bottom: 40px;
+}
+.promotion_ctn .card .card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #f2f0ee;
+}
+.promotion_ctn .card .like {
+  opacity: 1;
+}
+.promotion_ctn .card:hover {
+  transform: scale(1);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+.promotion_ctn .card:hover .card-content .buy-button {
+  display: block;
+}
+.promotion_ctn h2 {
+  text-align: center;
+  margin-top: 20px;
+}
+.promotion_ctn > p {
+  text-align: center;
+  margin-top: 40px;
+  font-family: fangsong;
+}
+
+section.avis_clients {
+  width: 100%;
+  margin-bottom: 80px;
+}
+section.avis_clients h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+section.avis_clients .avis_ctn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  perspective: 1000px;
+}
+
+.avis_ctn .card {
+  width: 300px; /* Largeur de la carte */
+  height: 350px;
+  position: relative;
+  transform-style: preserve-3d; /* Permet le rendu 3D des enfants */
+  transition: transform 0.8s; /* Animation de la rotation */
+}
+
+.avis_ctn .card:hover {
+  transform: rotateY(180deg); /* Rotation verticale au survol */
+}
+
+.avis_ctn .card-front,
+.avis_ctn .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Cache le dos de la carte lorsqu'elle est face avant */
+}
+
+.avis_ctn .card-front {
+  display: flex;
+  justify-content: center; /* Centrer l'image */
+  align-items: center; /* Centrer l'image verticalement */
+}
+
+.avis_ctn .card-image {
+  width: 100%; /* Couvre toute la carte */
+  height: auto; /* Garde le ratio de l'image */
+}
+
+.card-back {
+  display: flex;
+  justify-content: center; /* Centrer le bouton */
+  align-items: center; /* Centrer le bouton verticalement */
+  background-color: #dc9a0e; /* Couleur de fond du dos de la carte */
+  color: white; /* Couleur du texte du bouton */
+  transform: rotateY(180deg); /* Retourne le dos de la carte */
+}
+
+.card-back .buy-button {
+  padding: 10px 20px; /* Espacement autour du texte */
+  border: none; /* Pas de bordure */
+  border-radius: 5px; /* Coins légèrement arrondis */
+  cursor: pointer; /* Curseur pointer pour le bouton */
+  background-color: #c70039; /* Couleur du bouton */
+  color: white; /* Couleur du texte du bouton */
+  font-family: "Montserrat", sans-serif; /* Police du texte */
+  transition: background-color 0.3s; /* Transition pour le survol */
+}
+
+.card-back .buy-button:hover {
+  background-color: #900d18; /* Couleur au survol */
+}
+
+section.Representants {
+  margin-bottom: 80px;
+}
+section.Representants h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.slider {
+  position: relative;
+  width: 600px; /* Largeur maximale du slider */
+  margin: auto;
+  overflow: hidden; /* Cacher les débordements */
+  height: 200px;
+}
+
+.slides {
+  display: flex; /* Disposition en ligne pour les slides */
+  transition: transform 0.5s ease; /* Transition douce */
+  height: 200px;
+}
+
+.slide {
+  min-width: 100%; /* Chaque slide occupe la totalité du slider */
+  box-sizing: border-box; /* Inclure padding/border dans la largeur */
+  padding: 40px;
+  background-color: #f1f1f1; /* Couleur de fond des slides */
+  text-align: center; /* Centrer le texte */
+  font-size: 24px; /* Taille du texte */
+}
+
+.name {
+  font-size: 28px; /* Taille du nom */
+  color: gold; /* Couleur jaune or */
+  margin-bottom: 20px; /* Espacement inférieur */
+  font-family: Montserrat;
+}
+
+.country {
+  font-size: 20px; /* Taille du pays */
+  margin-bottom: 10px; /* Espacement inférieur */
+  font-family: Montserrat;
+}
+
+.phone {
+  font-size: 18px; /* Taille du numéro de téléphone */
+  font-family: Montserrat;
+}
+
+.phone i {
+  margin-right: 5px; /* Espacement entre l'icône et le texte */
+}
+
+.navigation {
+  position: absolute;
+  top: 30px;
+  width: 75px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between; /* Espacement entre les flèches */
+  transform: translateY(-50%); /* Centrer verticalement */
+}
+
+.prev,
+.next {
+  background-color: rgba(255, 255, 255, 0.7); /* Fond semi-transparent */
+  border: 1px solid black;
+  padding: 10px;
+  cursor: pointer; /* Curseur pointer pour les boutons */
+  font-size: 18px; /* Taille de la flèche */
+  color: white;
+  background-color: black;
+}
+.prev:hover,
+.next:hover {
+  opacity: 0.9;
+}
+
+.indicators {
+  text-align: center;
+  margin-top: 10px; /* Espacement au-dessus des indicateurs */
+}
+
+.indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: #bbb; /* Couleur des indicateurs */
+  border-radius: 50%; /* Forme circulaire */
+  cursor: pointer;
+}
+
+.indicator.active {
+  background-color: #717171; /* Couleur active pour l'indicateur sélectionné */
+}
+footer {
+  width: 100%;
+}
+.contacts {
+  background-color: #fff;
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  background-color: rgb(31, 163, 196);
+  color: white;
+}
+.contact_elmnt {
+  flex: 1;
+}
+.contact_elmnt:first-of-type {
+  flex: 2;
+}
+
+.info-item {
+  margin: 10px 0; /* Espacement vertical entre les éléments */
+  font-family: Montserrat;
+}
+
+.info-item i {
+  margin-right: 10px; /* Espacement entre l'icône et le texte */
+  color: #0cce16; /* Couleur des icônes */
+}
+.cpy {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #172337;
+}
+
+/* Media Query pour les écrans de 768px et moins (tablettes et mobiles) */
+@media (max-width: 768px) {
+  div.ctn {
+    width: 100vw;
+  }
+  .line,
+  .avis_ctn,
+  div.contacts {
+    flex-direction: column;
+  }
+  .contenu p {
+    font-size: 28px;
+  }
+  .contenu .btn {
+    font-size: 12px;
+    padding: 10px 24px;
+  }
+  .mob {
+    display: none;
+  }
+  .cpy {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .slider {
+    width: 100%; /* Largeur maximale du slider */
+  }
+}
